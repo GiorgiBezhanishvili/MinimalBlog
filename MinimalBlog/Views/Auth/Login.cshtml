@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/Layouts/_AuthLayout.cshtml";
+}
+
+<form class="form-signin">
+    <a href="index.html"><img class="mb-4" src="~/images/minimal.svg" alt="" width="72" height="72"></a>
+    <h1 class="h3 mb-3 font-weight-normal">Signin if You Want</h1>
+    <label class="sr-only">Email address</label>
+    <input type="email" class="form-control" placeholder="Email address" required autofocus>
+    <br />
+    <label class="sr-only">Password</label>
+    <input type="password" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
+    <br />
+    <a href="register.html">Register</a>
+
+    <p class="mt-5 mb-3 text-muted">Minimal Loves You</p>
+</form>
