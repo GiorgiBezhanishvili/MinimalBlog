@@ -30,7 +30,7 @@ namespace MinimalBlog
             services.AddDbContext<MinimalBlogDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MyConnectionString")));
 
-            services.AddIdentityCore<User>()
+            services.AddIdentity<User,IdentityRole>()
                 .AddEntityFrameworkStores<MinimalBlogDBContext>();
 
             services.AddControllersWithViews();

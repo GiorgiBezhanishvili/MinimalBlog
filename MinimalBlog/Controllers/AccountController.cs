@@ -9,26 +9,53 @@ using MinimalBlog.ViewModels;
 
 namespace MinimalBlog.Controllers
 {
-    public class AuthController : Controller
+    public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public AuthController(UserManager<User> userManager)
+        public AccountController(UserManager<User> userManager,SignInManager<User> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Login(string somthing) 
+        public async Task<IActionResult> Login(LoginVM model,string returnUrl) 
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email,model.Password,model.RememberMe,false);
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    else 
+                    {
+                        return RedirectToAction("Dashboard", "DBoard");
+                    }
+                }
+                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+            }
+            return View(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("index","home");
+        }
+
+        [HttpGet]
         public IActionResult Signup() 
         {
             return View();
@@ -47,15 +74,15 @@ namespace MinimalBlog.Controllers
                     Email = model.Email,
                     PasswordHash = model.Password,
 
-                    //for gachumeba
-                    UserName = "Nothing"
+                    //for username
+                    UserName = model.Email
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("index", "home");
+                    return RedirectToAction("Login");
                 }
 
                 foreach (var error in result.Errors)

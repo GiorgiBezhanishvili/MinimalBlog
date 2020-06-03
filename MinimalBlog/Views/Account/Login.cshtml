@@ -1,0 +1,28 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/Layouts/_AuthLayout.cshtml";
+}
+
+    <form asp-controller="account" asp-action="login" method="post" class="form-signin">
+        <a href="index.html"><img class="mb-4" src="~/images/minimal.svg" alt="" width="72" height="72"></a>
+        <h1 class="h3 mb-3 font-weight-normal">Signin if You Want</h1>
+
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <label asp-for="Email" class="sr-only"></label>
+        <input asp-for="Email" type="text" class="form-control" placeholder="Email address" required autofocus>
+        <br />
+        <label asp-for="Password" class="sr-only"></label>
+        <input asp-for="Password" type="password" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label asp-for="RememberMe">
+                <input asp-for="RememberMe" type="checkbox"> @Html.DisplayNameFor(n => n.RememberMe)
+            </label>
+        </div>
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
+        <br />
+        <a asp-controller="auth" asp-action="signup">Register</a>
+
+        <p class="mt-5 mb-3 text-muted">Minimal Loves You</p>
+    </form>
