@@ -1,35 +1,38 @@
-﻿
+﻿@model RegisterVM
 @{
     ViewData["Title"] = "Signup";
     Layout = "~/Views/Shared/Layouts/_AuthLayout.cshtml";
 }
 
-<form class="form-signin">
-    <a href="index.html"><img class="mb-4" src="~/images/minimal.svg" alt="" width="72" height="72"></a>
-    <h1 class="h3 mb-3 font-weight-normal">Eazy Sign up Ever</h1>
+    <form class="form-signin" asp-controller="auth" asp-action="signup" method="post">
+        <a href="index.html"><img class="mb-4" src="~/images/minimal.svg" alt="" width="72" height="72"></a>
+        <h1 class="h3 mb-3 font-weight-normal">Eazy Sign up Ever</h1>
 
-    <label class="sr-only">First Name</label>
-    <input type="text" class="form-control" placeholder="First Name" required autofocus>
-    <br />
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-    <label class="sr-only">Last Name</label>
-    <input type="text" class="form-control" placeholder="Last Name" required autofocus>
-    <br />
+        <label class="sr-only" asp-for="FirstName"></label>
+        <input asp-for="FirstName" type="text" class="form-control" placeholder="First Name" required autofocus>
+        <br />
 
-    <label class="sr-only">Email address</label>
-    <input type="email" class="form-control" placeholder="Email address" required autofocus>
-    <br />
-    <label class="sr-only">Password</label>
-    <input type="password" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div>
-    <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign up</button>
-    <br />
-    <a href="auth.html">Back to Sign In</a>
+        <label class="sr-only" asp-for="LastName"></label>
+        <input asp-for="LastName" type="text" class="form-control" placeholder="Last Name" required autofocus>
+        <br />
 
-    <p class="mt-5 mb-3 text-muted">Minimal Loves You</p>
-</form>
+        <label asp-for="Email" class="sr-only"></label>
+        <input asp-for="Email" type="email" class="form-control" placeholder="Email address" required autofocus>
+
+        <br />
+        <label asp-for="Password" class="sr-only"></label>
+        <input asp-for="Password" type="password" class="form-control" placeholder="Password" required>
+        <span asp-validation-for="Password" class="text-danger" ></span>
+        <br />
+        <label asp-for="ConfirmPassword" class="sr-only"></label>
+        <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
+
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign up</button>
+        <br />
+        <a asp-controller="auth" asp-action="login">Back to Sign In</a>
+
+        <p class="mt-5 mb-3 text-muted">Minimal Loves You</p>
+    </form>
 

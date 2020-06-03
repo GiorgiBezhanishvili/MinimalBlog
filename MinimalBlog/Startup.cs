@@ -10,6 +10,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DAL.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using DAL.Entities;
 
 namespace MinimalBlog
 {
@@ -27,6 +29,10 @@ namespace MinimalBlog
         {
             services.AddDbContext<MinimalBlogDBContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("MyConnectionString")));
+
+            services.AddIdentityCore<User>()
+                .AddEntityFrameworkStores<MinimalBlogDBContext>();
+
             services.AddControllersWithViews();
         }
 
@@ -45,6 +51,8 @@ namespace MinimalBlog
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseAuthentication();
 
             app.UseRouting();
 

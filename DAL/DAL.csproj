@@ -9,9 +9,12 @@
     <Compile Remove="Migrations\20200601194100_NewUpdatedMIgration.Designer.cs" />
     <Compile Remove="Migrations\20200601200516_InitialMigration.cs" />
     <Compile Remove="Migrations\20200601200516_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200601202016_InitialMigration.cs" />
+    <Compile Remove="Migrations\20200601202016_InitialMigration.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />

@@ -1,4 +1,5 @@
 ﻿using DAL.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace DAL.Context
 {
-    public class MinimalBlogDBContext : DbContext
+    public class MinimalBlogDBContext : IdentityDbContext
     {
         public MinimalBlogDBContext(DbContextOptions options) : base(options)
         {
@@ -22,28 +23,7 @@ namespace DAL.Context
             base.OnModelCreating(modelBuilder);
 
             //User
-            modelBuilder.Entity<User>()
-                .HasKey(e => e.Id);
-            modelBuilder.Entity<User>()
-                .Property(e => e.FirstName)
-                .HasColumnType("nvarchar(50)")
-                .IsRequired();
-            modelBuilder.Entity<User>()
-                .Property(e => e.LastName)
-                .HasColumnType("nvarchar(50)")
-                .IsRequired();
-            modelBuilder.Entity<User>()
-                .Property(e => e.Picture)
-                .HasColumnType("nvarchar(500)")
-                .IsRequired();
-            modelBuilder.Entity<User>()
-                .Property(e => e.Email)
-                .HasColumnType("nvarchar(50)")
-                .IsRequired();
-            modelBuilder.Entity<User>()
-               .Property(e => e.Password)
-               .HasColumnType("nvarchar(50)")
-               .IsRequired();
+            // ...
 
             //Post
             modelBuilder.Entity<Post>()

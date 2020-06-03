@@ -13,7 +13,7 @@ namespace DAL.Entities
         public string Thumb { get; set; }
         public DateTime Date { get; set; }
         public string Category { get; set; }
-        public int AuthorId { get; set; }
+        public string AuthorId { get; set; }
         public User Author { get; set; }
         public ICollection<Comment> Comments { get; set; }
     }

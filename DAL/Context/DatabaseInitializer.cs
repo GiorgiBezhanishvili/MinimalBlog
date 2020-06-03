@@ -15,21 +15,19 @@ namespace DAL.Context
                 .HasData(
                 new User
                 {
-                    Id = 1,
                     FirstName = "Giorgi",
                     LastName = "Bezhanishvili",
                     Picture = "profilepicture.png",
                     Email = "giorgi@gmail.com",
-                    Password = "0123456789"
+                    PasswordHash = "0123456789"
                 },
                 new User
                 {
-                    Id = 2,
                     FirstName = "Temp",
                     LastName = "User",
                     Picture = "temppicture.png",
                     Email = "tempuser@gmail.com",
-                    Password = "1234567890"
+                    PasswordHash = "1234567890"
                 });
         }
     }
