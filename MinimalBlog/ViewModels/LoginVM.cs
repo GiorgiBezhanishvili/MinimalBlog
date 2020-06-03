@@ -9,7 +9,7 @@ namespace MinimalBlog.ViewModels
     public class LoginVM
     {
         [Required]
-        //[EmailAddress]
+        [EmailAddress]
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
