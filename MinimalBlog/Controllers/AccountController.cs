@@ -40,6 +40,10 @@ namespace MinimalBlog.Controllers
                     }
                     else 
                     {
+                        var user = await _userManager.FindByNameAsync($"{model.Email}");
+                        var fName = user.FirstName;
+                        var lName = user.LastName;
+                        ViewBag.UserName = $"{fName} {lName}";
                         return RedirectToAction("Dashboard", "DBoard");
                     }
                 }

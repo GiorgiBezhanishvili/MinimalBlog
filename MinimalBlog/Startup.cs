@@ -12,6 +12,8 @@ using DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using DAL.Entities;
+using Services.Contracts;
+using Services.Repositories;
 
 namespace MinimalBlog
 {
@@ -32,6 +34,8 @@ namespace MinimalBlog
 
             services.AddIdentity<User,IdentityRole>()
                 .AddEntityFrameworkStores<MinimalBlogDBContext>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddControllersWithViews();
         }

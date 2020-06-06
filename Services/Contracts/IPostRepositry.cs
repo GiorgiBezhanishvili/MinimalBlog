@@ -7,5 +7,6 @@ namespace Services.Contracts
 {
     public interface IPostRepositry : IBaseRepository<Post>
     {
+        public IEnumerable<Post> GetAllPostsByAuthorId(string authorId);
     }
 }

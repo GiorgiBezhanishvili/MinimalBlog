@@ -18,7 +18,7 @@ namespace Services.Repositories
 
         public MinimalBlogDBContext Context { get; set; }
 
-        public void Add(T entity)
+        public void Create(T entity)
         {
             Context.Set<T>().Add(entity);
         }

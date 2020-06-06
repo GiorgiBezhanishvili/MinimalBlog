@@ -10,7 +10,7 @@ namespace Services.Contracts
         IEnumerable<T> GetAll();
         IEnumerable<T> GetByCondition(Expression<Func<T,bool>> expression);
         T GetById(int id);
-        void Add(T entity);
+        void Create(T entity);
         void Update(T entity);
         void Delete(T entity);
     }
